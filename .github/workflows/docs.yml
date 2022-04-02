@@ -1,0 +1,63 @@
+name: Deploy Docs
+on:
+  push:
+    branches:
+      - "main"
+  workflow_dispatch:
+jobs:
+  build:
+    name: Build Docs
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[docs]')"
+    steps:
+    - 
+      name: "Checkout Repo"
+      uses: actions/checkout@master
+    - 
+      name: "Setup Node v16"
+      uses: actions/setup-node@master
+      with:
+        node-version: 16
+    - 
+      name: "(env) pnpm"
+      run: curl -L https://pnpm.js.org/pnpm.js | node - add --global pnpm
+    - 
+      name: "(env) cache"
+      uses: actions/cache@master
+      with:
+        path: ~/.pnpm-store
+        key: ${{ runner.os }}-${{ matrix.nodejs }}-${{ hashFiles('**/package.json') }}
+        restore-keys: ${{ runner.os }}-${{ matrix.nodejs }}-
+    - 
+      name: "Install"
+      run: pnpm install -C docs
+    - 
+      name: "Compile"
+      run: pnpm build -C docs
+    -
+      name: "Import GPG"
+      uses: crazy-max/ghaction-import-gpg@v3
+      with:
+        gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+        passphrase: ${{ secrets.PASSPHRASE }}
+        git-user-signingkey: true
+        git-config-global: true
+        git-commit-gpgsign: true
+        git-tag-gpgsign: true
+    - 
+      if: success()
+      name: "Commit + Deploy"
+      uses: crazy-max/ghaction-github-pages@v2.6.0
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      with:
+        author: "Nicholas Berlette <nick@berlette.com>"
+        committer: "Nicholas Berlette <nick@berlette.com>"
+        commit_message: "[docs]: auto deploy to gh-pages"
+        target_branch: docs
+        build_dir: "docs/.vitepress/dist"
+        keep_history: true
+        dry_run: false
+        verbose: true
+        jekyll: false
+ 

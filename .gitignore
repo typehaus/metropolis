@@ -1,0 +1,14 @@
+.DS_Store
+Sources/*(Autosaved).glyphs
+instance_ufo
+master_ufo
+output
+src/*(Autosaved).glyphs
+.*.log
+*.env
+*.env.*
+!.env.project
+!.env.example
+node_modules
+**/node_modules/**
+docs/.vitepress/dist

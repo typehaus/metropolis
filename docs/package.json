@@ -1,0 +1,26 @@
+{
+  "name": "@typehaus/metropolis/docs",
+  "license": "Unlicense",
+  "version": "0.0.1",
+  "author": "Nicholas Berlette <nick@berlette.com>",
+  "homepage": "https://typehaus.org/metropolis",
+  "repository": {
+    "url": "https://github.com/typehaus/metropolis",
+    "directory": "docs"
+  },
+  "readme": "https://github.com/typehaus/metropolis#readme",
+  "bugs": "https://github.com/typehaus/metropolis/issues",
+  "prettier": "@brlt/prettier/vue",
+  "scripts": {
+    "dev": "vitepress dev .",
+    "build": "vitepress build .",
+    "serve": "vitepress serve .",
+    "lint": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@brlt/prettier": "latest",
+    "prettier": "^2.6.0",
+    "vitepress": "0.22.3"
+  }
+}

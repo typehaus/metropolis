@@ -1,0 +1,53 @@
+{
+  "name": "@typehaus/metropolis",
+  "version": "10.2.0",
+  "license": "Unlicense",
+  "author": "chrismsimpson",
+  "contributors": [
+    {
+      "name": "Nicholas Berlette",
+      "email": "nick@berlette.com",
+      "url": "https://typehaus.org"
+    }
+  ],
+  "maintainers": [
+    {
+      "name": "Nicholas Berlette",
+      "email": "nick@berlette.com",
+      "url": "https://typehaus.org"
+    }
+  ],
+  "repository": "typehaus/metropolis",
+  "bugs": "https://github.com/typehaus/metropolis/issues",
+  "homepage": "https://typehaus.org/metropolis",
+  "publishConfig": {
+    "access": "public"
+  },
+  "packageManager": "pnpm@6.23.3",
+  "scripts": {
+    "test": "echo 'No tests configured yet!' && exit 1",
+    "build": "bin/build.sh",
+    "clean": "rm -rf node_modules",
+    "build:docs": "pnpm dev -C docs"
+  },
+  "description": "A modern, geometric typeface by Chris M. Simpson, maintained by typehaus.org",
+  "keywords": [
+    "font",
+    "type",
+    "typeface",
+    "metropolis",
+    "geometric",
+    "modern",
+    "typehaus",
+    "typography",
+    "sans-serif",
+    "glyphs"
+  ],
+  "files": [
+    "files",
+    "dist"
+  ],
+  "devDependencies": {
+    "webfont": "11.2.26"
+  }
+}
