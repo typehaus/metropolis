@@ -39,7 +39,7 @@ jobs:
       uses: crazy-max/ghaction-import-gpg@v3
       with:
         gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
-        passphrase: ${{ secrets.PASSPHRASE }}
+        passphrase: ${{ secrets.GPG_PASSPHRASE }}
         git-user-signingkey: true
         git-config-global: true
         git-commit-gpgsign: true
@@ -53,7 +53,7 @@ jobs:
       with:
         author: "Nicholas Berlette <nick@berlette.com>"
         committer: "Nicholas Berlette <nick@berlette.com>"
-        commit_message: "[docs]: auto deploy to gh-pages"
+        commit_message: "[docs]: 🚀 deploy documentation"
         target_branch: docs
         build_dir: "docs/.vitepress/dist"
         keep_history: true
