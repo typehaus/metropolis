@@ -1,4 +1,4 @@
 # Contributing
 
-1. Read the [Documentation](./Documentation/Documentation.md)
+1. Read the [Documentation](https://typehaus.org/metropolis)
 2. Create a pull request
