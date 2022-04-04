@@ -1,9 +1,11 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@brlt/prettier': ^1.6.3
   webfont: 11.2.26
 
 devDependencies:
+  '@brlt/prettier': 1.6.4
   webfont: 11.2.26
 
 packages:
@@ -27,6 +29,10 @@ packages:
       '@babel/helper-validator-identifier': 7.16.7
       chalk: 2.4.2
       js-tokens: 4.0.0
+    dev: true
+
+  /@brlt/prettier/1.6.4:
+    resolution: {integrity: sha512-u8eg/WSlH5qRb0Az3vsgvLPhxDt1y2b5BUDUwEhGKcr61YJlJI2/OGOZ+clg4pX6RcarAUL5oFVkp/XDgjfGsQ==}
     dev: true
 
   /@nodelib/fs.scandir/2.1.5:
