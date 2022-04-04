@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@brlt/prettier': ^1.6.3
+  '@brlt/prettier': ^1.6.4
   webfont: 11.2.26
 
 devDependencies:

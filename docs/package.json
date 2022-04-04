@@ -1,5 +1,5 @@
 {
-  "name": "@typehaus/metropolis/docs",
+  "name": "@typehaus/metropolis-docs",
   "license": "Unlicense",
   "version": "0.0.1",
   "author": "Nicholas Berlette <nick@berlette.com>",
@@ -19,7 +19,7 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
-    "@brlt/prettier": "latest",
+    "@brlt/prettier": "^1.6.4",
     "prettier": "^2.6.0",
     "vitepress": "0.22.3"
   }

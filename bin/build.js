@@ -40,20 +40,24 @@ const main = async () => {
 	font-style: ${style === 'Italic' ? 'italic' : 'normal'};
 	font-weight: ${weight};
 	src: local('Metropolis'),
-			 ${formats.map(
-			format => (
-				(encoded = Buffer.from(
-					readFileSync(`${__dirname}/../dist/${format}/Metropolis-${weightName}${style}.${format}`)
-				).toString('base64')),
-				`url(data:font/${format};charset=utf-8;base64,${encoded}) format('${format}')`
+			 ${formats
+					.map(
+						format => (
+							(encoded = Buffer.from(
+								readFileSync(`${__dirname}/../dist/${format}/Metropolis-${weightName}${style}.${format}`)
+							).toString('base64')),
+							`url(data:font/${format};charset=utf-8;base64,${encoded}) format('${format}')`
+						)
+					)
+					.join(',\n       ')};
+}`
 			)
-		).join(',\n       ')};
-}`).join('\n');
+			.join('\n');
 		css += cssByWeight[weight];
-		await fs.writeFile(path.join(cssPath, `Metropolis-${weightName}.css`), cssByWeight[weight], 'utf8');
+		await fs.writeFile(path.join(cssPath, `${weightName}.css`), cssByWeight[weight], 'utf8');
 	}
 	return css;
 };
 main()
-	.then(async css => await fs.writeFile(path.join(cssPath, 'Metropolis.css'), css, 'utf8'))
+	.then(async css => await fs.writeFile(path.join(cssPath, 'metropolis.css'), css, 'utf8'))
 	.finally(() => console.log('CSS built and written to ./dist/css!'));

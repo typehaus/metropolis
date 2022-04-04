@@ -1,6 +1,6 @@
 {
 	"name": "@typehaus/metropolis",
-	"version": "12.0.0-next.1",
+	"version": "12.0.0-next.2",
 	"license": "Unlicense",
 	"author": "chrismsimpson",
 	"contributors": [
@@ -8,54 +8,75 @@
 			"name": "Nicholas Berlette",
 			"email": "nick@berlette.com",
 			"url": "https://typehaus.org"
-		}
-	],
-	"maintainers": [
+		},
 		{
-			"name": "Nicholas Berlette",
-			"email": "nick@berlette.com",
-			"url": "https://typehaus.org"
+			"name": "Chris M. Simpson",
+			"email": "chris.m.simpson@icloud.com",
+			"url": "https://github.com/chrismsimpson"
 		}
 	],
 	"repository": "typehaus/metropolis",
 	"bugs": "https://github.com/typehaus/metropolis/issues",
 	"homepage": "https://typehaus.org/metropolis",
 	"publishConfig": {
-		"access": "public"
+		"access": "public",
+		"tag": "next"
 	},
 	"packageManager": "pnpm@6.23.4",
 	"scripts": {
-		"test": "echo 'No tests configured yet!' && exit 1",
+		"test": "pnpm lint",
 		"build:css": "node bin/build",
 		"build:docs": "pnpm dev -C docs",
 		"lint": "prettier --check 'dist/**/*.{ts,js,css,json,md,yml,yaml}'",
 		"format": "prettier --write 'dist/**/*.{ts,js,css,json,md,yml,yaml}'",
-		"preversion": "pnpm build:css && pnpm format && pnpm lint",
+		"preversion": "pnpm format && pnpm lint",
 		"version": "git add --all",
 		"postversion": "git push --follow-tags",
-		"prepublishOnly": "pnpm version prerelease --preid=next -m '🔖 %s' --no-git-checks --sign-git-tag --git-tag-version --allow-same-version --force",
+		"prepublishOnly": "pnpm version prerelease --preid=next -m '🔖 %s' --no-git-checks --sign-git-tag --git-tag-version --allow-same-version --force ${DRY_RUN:+'--dry-run'}",
 		"postpublish": "pnpm clean",
 		"release": "pnpm publish --no-git-checks --registry=https://registry.npmjs.org",
 		"clean": "rm -rf node_modules"
 	},
-	"main": "./dist/css/Metropolis.css",
+	"files": [
+		"!docs",
+		"!src",
+		"!.github",
+		"!dist/**/*",
+		"dist/css/metropolis.css",
+		"dist/css/*.css"
+	],
+	"main": "./dist/css/metropolis.css",
 	"exports": {
 		".": {
 			"types": "./index.d.ts",
-			"import": "./dist/css/Metropolis.css",
-			"require": "./dist/css/Metropolis.css",
-			"default": "./dist/css/Metropolis.css"
+			"import": "./dist/css/metropolis.css",
+			"require": "./dist/css/metropolis.css",
+			"default": "./dist/css/metropolis.css"
 		},
-		"./css/*": "./dist/css/Metropolis-*.css",
-		"./woff/*": "./dist/woff/Metropolis-*.woff",
-		"./woff2/*": "./dist/woff2/Metropolis-*.woff2",
-		"./ttf/*": "./dist/ttf/Metropolis-*.ttf",
-		"./otf/*": "./dist/otf/Metropolis-*.otf",
-		"./eot/*": "./dist/eot/Metropolis-*.eot",
-		"./package.json": "./package.json",
-		"./*": "./dist/*"
+		"./black.css": "./dist/css/black.css",
+		"./900.css": "./dist/css/black.css",
+		"./extrabold.css": "./dist/css/extrabold.css",
+		"./xbold.css": "./dist/css/extrabold.css",
+		"./800.css": "./dist/css/extrabold.css",
+		"./bold.css": "./dist/css/bold.css",
+		"./700.css": "./dist/css/bold.css",
+		"./semibold.css": "./dist/css/semibold.css",
+		"./600.css": "./dist/css/semibold.css",
+		"./medium.css": "./dist/css/medium.css",
+		"./500.css": "./dist/css/medium.css",
+		"./regular.css": "./dist/css/regular.css",
+		"./book.css": "./dist/css/regular.css",
+		"./400.css": "./dist/css/regular.css",
+		"./light.css": "./dist/css/light.css",
+		"./300.css": "./dist/css/light.css",
+		"./extralight.css": "./dist/css/extralight.css",
+		"./xlight.css": "./dist/css/extraLight.css",
+		"./200.css": "./dist/css/extralight.css",
+		"./thin.css": "./dist/css/thin.css",
+		"./100.css": "./dist/css/thin.css",
+		"./package.json": "./package.json"
 	},
-	"description": "A modern, geometric typeface by Chris M. Simpson, maintained by typehaus.org",
+	"description": "Modern, geometric typeface. Designed by Chris M. Simpson, updated and  maintained by @typehaus.",
 	"keywords": [
 		"font",
 		"type",
@@ -66,14 +87,12 @@
 		"typehaus",
 		"typography",
 		"sans-serif",
-		"glyphs"
-	],
-	"files": [
-		"files",
-		"dist"
+		"glyphs",
+		"woff",
+		"woff2"
 	],
 	"devDependencies": {
-		"@brlt/prettier": "^1.6.3",
+		"@brlt/prettier": "^1.6.4",
 		"webfont": "11.2.26"
 	}
 }

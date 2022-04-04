@@ -1,12 +1,12 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@brlt/prettier': latest
+  '@brlt/prettier': ^1.6.4
   prettier: ^2.6.0
   vitepress: 0.22.3
 
 devDependencies:
-  '@brlt/prettier': 1.6.3
+  '@brlt/prettier': 1.6.4
   prettier: 2.6.2
   vitepress: 0.22.3
 
@@ -128,8 +128,8 @@ packages:
     hasBin: true
     dev: true
 
-  /@brlt/prettier/1.6.3:
-    resolution: {integrity: sha512-tLr7PlhDqXNP9hG/zyJGRi5sWEjsUWga7uAEpMHm1gVL9pKmiwkW97I18Dm7hMgGPJrPuaMpRHBn0cQNSZA/+A==}
+  /@brlt/prettier/1.6.4:
+    resolution: {integrity: sha512-u8eg/WSlH5qRb0Az3vsgvLPhxDt1y2b5BUDUwEhGKcr61YJlJI2/OGOZ+clg4pX6RcarAUL5oFVkp/XDgjfGsQ==}
     dev: true
 
   /@docsearch/css/3.0.0:
