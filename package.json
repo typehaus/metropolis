@@ -38,6 +38,7 @@
 		"release": "pnpm publish --no-git-checks --registry=https://registry.npmjs.org",
 		"clean": "rm -rf node_modules"
 	},
+	"main": "./dist/css/Metropolis.css",
 	"exports": {
 		".": {
 			"types": "./index.d.ts",
@@ -50,7 +51,9 @@
 		"./woff2/*": "./dist/woff2/Metropolis-*.woff2",
 		"./ttf/*": "./dist/ttf/Metropolis-*.ttf",
 		"./otf/*": "./dist/otf/Metropolis-*.otf",
-		"./eot/*": "./dist/eot/Metropolis-*.eot"
+		"./eot/*": "./dist/eot/Metropolis-*.eot",
+		"./package.json": "./package.json",
+		"./*": "./dist/*"
 	},
 	"description": "A modern, geometric typeface by Chris M. Simpson, maintained by typehaus.org",
 	"keywords": [
