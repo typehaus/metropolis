@@ -1,6 +1,6 @@
 {
 	"name": "@typehaus/metropolis",
-	"version": "12.0.0-next.2",
+	"version": "12.0.0-next.3",
 	"license": "Unlicense",
 	"author": "chrismsimpson",
 	"contributors": [
@@ -20,7 +20,7 @@
 	"homepage": "https://typehaus.org/metropolis",
 	"publishConfig": {
 		"access": "public",
-		"tag": "next"
+		"tag": "latest"
 	},
 	"packageManager": "pnpm@6.23.4",
 	"scripts": {
