@@ -12,3 +12,6 @@ src/*(Autosaved).glyphs
 node_modules
 **/node_modules/**
 docs/.vitepress/dist
+.hidden
+.hidden/**
+.private/**
