@@ -46,6 +46,7 @@
 		"dist/css/*.css"
 	],
 	"main": "./dist/css/metropolis.css",
+	"types": "./index.d.ts",
 	"exports": {
 		".": {
 			"types": "./index.d.ts",
@@ -74,7 +75,8 @@
 		"./200.css": "./dist/css/extralight.css",
 		"./thin.css": "./dist/css/thin.css",
 		"./100.css": "./dist/css/thin.css",
-		"./package.json": "./package.json"
+		"./package.json": "./package.json",
+		"./index.d.ts": "./index.d.ts"
 	},
 	"description": "Modern, geometric typeface. Designed by Chris M. Simpson, updated and  maintained by @typehaus.",
 	"keywords": [

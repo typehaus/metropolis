@@ -34,11 +34,12 @@ const main = async () => {
 		cssByWeight[weight] = styles
 			.map(
 				style => `
-/* Metropolis ${weightName}${style ? ' ' + style : ''} (${weight}) */
+/** typehaus/metropolis/dist/css/${weightName.toLowerCase()}.css */
 @font-face {
 	font-family: 'Metropolis';
 	font-style: ${style === 'Italic' ? 'italic' : 'normal'};
 	font-weight: ${weight};
+	font-display: block;
 	src: local('Metropolis'),
 			 ${formats
 					.map(
