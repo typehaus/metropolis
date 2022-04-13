@@ -1,0 +1,108 @@
+{
+  "name": "@typehaus/metropolis",
+  "version": "12.0.0-next.7",
+  "license": "Unlicense",
+  "author": {
+    "name": "Nicholas Berlette",
+    "email": "nick@typehaus.org",
+    "url": "https://typehaus.org"
+  },
+  "private": false,
+  "contributors": [
+    {
+      "name": "Nicholas Berlette",
+      "email": "nick@berlette.com",
+      "url": "https://typehaus.org"
+    },
+    {
+      "name": "Chris M. Simpson",
+      "email": "chris.m.simpson@icloud.com",
+      "url": "https://github.com/chrismsimpson"
+    }
+  ],
+  "repository": "typehaus/metropolis",
+  "bugs": "https://github.com/typehaus/metropolis/issues",
+  "homepage": "https://typehaus.org/metropolis",
+  "packageManager": "pnpm@6.23.6",
+  "main": "./index.css",
+  "types": "./index.d.ts",
+  "description": "Modern, geometric typeface. Designed by Chris M. Simpson, updated and  maintained by @typehaus.",
+  "keywords": [
+    "font",
+    "type",
+    "typeface",
+    "metropolis",
+    "geometric",
+    "modern",
+    "typehaus",
+    "typography",
+    "sans-serif",
+    "glyphs",
+    "woff",
+    "woff2"
+  ],
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.css",
+      "require": "./index.css",
+      "default": "./index.css"
+    },
+    "./index.d.ts": "./index.d.ts",
+    "./package.json": "./package.json",
+    "./100.css": "./100.css",
+    "./200.css": "./200.css",
+    "./300.css": "./300.css",
+    "./400.css": "./400.css",
+    "./500.css": "./500.css",
+    "./600.css": "./600.css",
+    "./700.css": "./700.css",
+    "./800.css": "./800.css",
+    "./900.css": "./900.css",
+    "./black.css": "./black.css",
+    "./bold.css": "./bold.css",
+    "./bolder.css": "./bolder.css",
+    "./book.css": "./book.css",
+    "./extrabold.css": "./extrabold.css",
+    "./extralight.css": "./extralight.css",
+    "./index.css": "./index.css",
+    "./light.css": "./light.css",
+    "./lighter.css": "./lighter.css",
+    "./medium.css": "./medium.css",
+    "./regular.css": "./regular.css",
+    "./semibold.css": "./semibold.css",
+    "./thin.css": "./thin.css",
+    "./xbold.css": "./xbold.css",
+    "./xlight.css": "./xlight.css"
+  },
+  "files": [
+    "100.css",
+    "200.css",
+    "300.css",
+    "400.css",
+    "500.css",
+    "600.css",
+    "700.css",
+    "800.css",
+    "900.css",
+    "black.css",
+    "bold.css",
+    "bolder.css",
+    "book.css",
+    "extrabold.css",
+    "extralight.css",
+    "index.css",
+    "light.css",
+    "lighter.css",
+    "medium.css",
+    "regular.css",
+    "semibold.css",
+    "thin.css",
+    "xbold.css",
+    "xlight.css"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  }
+}

@@ -73,7 +73,7 @@ function updatePackageExports (pkg = {}) {
 async function copyStaticFiles () {
   const files = ['license.md', 'readme.md', 'index.d.ts', '.gitignore']
   for (const file of files) {
-    await fs.copyFile(path.resolve(__dirname, '../', file), path.resolve(__dirname, '../', 'dist/css/', file)).then(() => console.log(`Copied ${file} to dist/css`))
+    await fs.promises.copyFile(path.resolve(__dirname, '../', file), path.resolve(__dirname, '../', 'dist/css/', file)).then(() => console.log(`Copied ${file} to dist/css`))
   }
 }
 
