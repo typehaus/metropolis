@@ -18,17 +18,19 @@ Metropolis has just been published by `typehaus` on the NPM registry! While stil
 pnpm add @typehaus/metropolis
 ```
 
-> ***Don't have PNPM?*** [Click here to find out why you should dump NPM.](https://get.pnpm.io)
+- > ***Don't have PNPM?*** [Click here to find out why you should dump NPM.](https://get.pnpm.io)
 
 <br>
 
 ### 2. Import
 
-The following methods work in most of the popular frontend frameworks. 
+Best practice for CSS-based webfonts is to import them in the same place you import your stylesheets and theme files, to ensure they aren't missed by your pipeline's asset optimization steps.  
 
-- [Next.js](https://nextjs.org) — add it to `_app.tsx` or `_app.jsx` 
-- [SvelteKit](https://kit.svelte.dev):  add it to `__layout.svelte` file. 
-- [Nuxt.js](https://nuxtjs.org): ...[consult their documentation](https://nuxtjs.org), because I'm not quite sure 😅
+It's always recommended to consult the official documentation of whichever framework you're building with, but heres
+
+- [Next.js](https://nextjs.org), prepend to `_app.tsx` or `_app.jsx` 
+- [SvelteKit](https://kit.svelte.dev),  prepend to `__layout.svelte` file. 
+- [Vue](https://vuejs.org) / [Nuxt](https://nuxtjs.org) / [Vitesse](https://github.com/antfu/vitesse), add to your default layout file
 
 <br>
 
@@ -42,7 +44,7 @@ import '@typehaus/metropolis'
 
 You can also import individual weights (recommended). Both the normal and italic style are included in each weight, and (for compatibility) both the keyword or numeric filename work just fine.
 
-<details open><summary>100 · Thin</summary>
+<details open><summary>100, Thin</summary>
 
 ```js
 import '@typehaus/metropolis/thin.css'
@@ -52,8 +54,7 @@ import '@typehaus/metropolis/thin.css'
 import '@typehaus/metropolis/100.css'
 ```
 
-</details>
-<details><summary>200 · ExtraLight</summary>
+</details><details><summary>200, Extra·Light, X·Light</summary>
 
 ```js
 import '@typehaus/metropolis/extralight.css'
@@ -67,8 +68,7 @@ import '@typehaus/metropolis/xlight.css'
 import '@typehaus/metropolis/200.css'
 ```
 
-</details>
-<details><summary>300 · Light</summary>
+</details><details><summary>300, Light</summary>
 
 ```js
 import '@typehaus/metropolis/light.css'
@@ -78,8 +78,7 @@ import '@typehaus/metropolis/light.css'
 import '@typehaus/metropolis/300.css'
 ```
 
-</details>
-<details><summary>400 · Regular</summary>
+</details><details><summary>400, Book, Regular</summary>
 
 ```js
 import '@typehaus/metropolis/regular.css'
@@ -93,8 +92,7 @@ import '@typehaus/metropolis/book.css'
 import '@typehaus/metropolis/400.css'
 ```
 
-</details>
-<details><summary>500 · Medium</summary>
+</details><details><summary>500, Medium</summary>
 
 ```js
 import '@typehaus/metropolis/medium.css'
@@ -104,8 +102,7 @@ import '@typehaus/metropolis/medium.css'
 import '@typehaus/metropolis/500.css'
 ```
 
-</details>
-<details><summary>600 · SemiBold</summary>
+</details><details><summary>600, Semi·Bold</summary>
 
 ```js
 import '@typehaus/metropolis/semibold.css'
@@ -115,8 +112,7 @@ import '@typehaus/metropolis/semibold.css'
 import '@typehaus/metropolis/600.css'
 ```
 
-</details>
-<details><summary>700 · Bold</summary>
+</details><details><summary>700, Bold</summary>
 
 ```js
 import '@typehaus/metropolis/bold.css'
@@ -126,8 +122,7 @@ import '@typehaus/metropolis/bold.css'
 import '@typehaus/metropolis/700.css'
 ```
 
-</details>
-<details><summary>800 · ExtraBold</summary>
+</details><details><summary>800, Extra·Bold, X·Bold</summary>
 
 ```js
 import '@typehaus/metropolis/extrabold.css'
@@ -141,8 +136,7 @@ import '@typehaus/metropolis/xbold.css'
 import '@typehaus/metropolis/800.css'
 ```
 
-</details>
-<details><summary>900 · Black</summary>
+</details><details><summary>900, Black</summary>
 
 ```js
 import '@typehaus/metropolis/black..css'
@@ -154,13 +148,13 @@ import '@typehaus/metropolis/900.css'
 
 </details>
 
-<br>
+<style>details>summary{font-size:1.3em;font-weight:bold;padding:5px 10px;margin:20px 0 6px 0;border-bottom:1px solid #fff2;cursor:pointer}</style>
+
+<br><hr><br>
 
 ### 3. Implement
 
 Now you just need to add it to your actual CSS!
-
-With some backups, so nobody is stuck with `Times New Roman`:
 
 ```css
 html, body {
@@ -168,13 +162,17 @@ html, body {
 }
 ```
 
----  
+> *The additional font families are* “emergency backups”... *that way, in the terrible (and unheard-of) event that your fonts don't load, your users won't be stuck with `Times New Roman`*.
+
+<br><hr><br>
 
 ## Specimens
 
 ![Metropolis](https://raw.github.com/typehaus/metropolis/main/docs/specimens/Metro-1.png)
 
 ![Metropolis](https://raw.github.com/typehaus/metropolis/main/docs/specimens/Metro-2.png)
+
+<br><hr><br><br>
 
 ## [Table of Contents](#table-of-contents)
 
@@ -196,7 +194,7 @@ html, body {
 7. [Contributing](#contributing)
   * [Submitting a Pull Request](#submitting-a-pull-request)
 
----  
+<br><hr><br>
 
 ## Metrics
 
@@ -233,6 +231,8 @@ There likely should be many more formal values, but they don't exist. Pretty muc
 
 Armed with all the above metrics, you should be able draw a great many number of outlines/glyphs. There are 327 already there by my count. I say outlines, I have intentionally left out spacing until now.
 
+<br><hr><br>
+
 ## Workflow
 
 ![Metropolis Workflow in Glyphs.app](./img/00_Workflow.png)
@@ -241,9 +241,11 @@ Metropolis is built with an entirely Glyphs ([https://glyphsapp.com](https://gly
 
 The two plugins that are essential to this workflow are HT Letterspacer ([https://huertatipografica.github.io/HTLetterspacer/)](https://huertatipografica.github.io/HTLetterspacer/) and BubbleKern ([http://glyphsextensions.com/bubblekern/](http://glyphsextensions.com/bubblekern/)). More on both those below.
 
+<br><hr><br>
+
 ### HT Letterspacer
 
-> ***Checkout [https://huertatipografica.github.io/HTLetterspacer/)]() for a much more thorough explanation.***
+> ***Checkout [the HTLetterspacer website ](https://huertatipografica.github.io/HTLetterspacer)for a much more thorough explanation.***
 
 HT Letterspacer is a tool that automatically calculates the appropriate left and right bearing on any glyph, essentially doing the spacing part of the design automatically.
 
@@ -290,6 +292,8 @@ Once both the plugin and these settings are correctly set up, you can invoke the
 
 When using this tool/making spacing adjustments, it's key to run it many times. You will see the glyphs coalesce into their eventual spacing, but it may actually take multiple runs of the tool for it to reach it's optimal point.
 
+<br><hr><br>
+
 ### BubbleKern
 
 ![Glyphs Extension: BubbleKern](./img/07_BubbleKern.png)
@@ -304,6 +308,8 @@ Once defined/drawn for every glyph, BubbleKern is then run. I have prepared `Met
 
 As a guide, I am using 56, 53 & 50 as offset values when drawing the kern bubbles for Thin, Regular & Black, respectively. As a rule, I try to honor the values already arrived at by HT Letterspacer. 
 
+<br><hr><br>
+
 ### Cursify
 
 I'm largely using Glyph's 'Cursify' tool to do the italics. This yields better results that simply slanting the glyph shapes from the regular/normal glyph, though from memory I was doing something tricky like slanting the vertical bars and cursifying everything else.
@@ -314,7 +320,7 @@ Will update if/when I can recreate how I did this. Again, a lot of just eyeballi
 | :------------------------------: | :--------------------------: |
 | ![Cursify](./img/08_Cursify.png) | ![Slant](./img/09_Slant.png) |
 
----  
+<br><hr><br>
 
 ## Release Process
 
@@ -332,6 +338,8 @@ Will update if/when I can recreate how I did this. Again, a lot of just eyeballi
 ### Export Formats
 
 Once I've run BubbleKern, I create exports for OpenType, TrueType, UFO, EOT, WOFF & WOFF2.
+
+<br><hr><br>
 
 ## Future Plans
 
@@ -357,21 +365,23 @@ This possibly would require an entire redrawing effort. The current metrics *kin
 
 ### Alternatives to Glyphs
 
-At present, the best bet is the UFO export. However, if you want to request glyph, you must raise an issue and add your modified file as an attachment to the issue, rather than a pull request. I will only allow PRs to the glpyhs file.
+At present, the best bet is the UFO export. However, if you want to request glyph, you must raise an issue and add your modified file as an attachment to the issue, rather than a pull request. I will only allow PRs to the glyphs file.
 
 This will in turn mean someone (likely myself) will need to translate this into an appropriate commit/PR.
 
----
+<br><hr><br>
 
 ## Contributing
 
-Please refer to the [contribution guidelines](./contributing.md) before proceeding with a PR.
+Please refer to these contribution guidelines before proceeding with a PR:
 
 ### Submitting a Pull Request
 
-I will only review PRs that are small and isolated and can be easily described and understood within the context of the PR rather than even needing to open it.
+We will only review PRs that are small and isolated and can be easily described and understood within the context of the PR rather than even needing to open it.
 
 When saving the file for your PR close all other open tabs and leave one remaining with the added/modified glyphs visible. This makes it much easier to review PRs.
+
+### Guidelines
 
 Please **do**:
 
