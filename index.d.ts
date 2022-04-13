@@ -3,7 +3,12 @@ declare module '@typehaus/metropolis' {
 	export default content;
 }
 
-declare module '@typehaus/metropolis/*.css' {
-	const content: any;
+declare module '*.css' {
+	const content: { [className: string]: any } & any;
 	export default content;
+}
+
+declare module '@typehaus/metropolis/*.css' {
+  const content: { [className: string]: any } & any;
+  export default content;
 }
