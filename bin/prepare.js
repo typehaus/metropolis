@@ -71,10 +71,9 @@ function updatePackageExports (pkg = {}) {
 }
 
 function copyStaticFiles () {
-  const pattern = /(readme\.md|license(\.md)?|\.gitignore|index\.d\.ts)$/i;
-  const files = Array.from(fs.readdirSync(path.resolve('../')))
-  for (const file of files.filter(f => f.match(pattern))) {
-    fs.copyFileSync(path.resolve(__dirname, '../', file), path.resolve(__dirname, '../dist/css/', file))
+  const files = ['license.md', 'readme.md', 'index.d.ts', '.gitignore']
+  for (const file of files) {
+    fs.copyFileSync(path.resolve('../', file), path.resolve('../dist/css/', file))
   }
 }
 
