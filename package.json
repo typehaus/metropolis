@@ -28,13 +28,12 @@
 		"format": "prettier --write 'dist/**/*.{ts,js,css,json,md,yml,yaml}'",
 		"preversion": "pnpm format && pnpm lint",
 		"version": "git add --all",
-		"postversion": "git push --follow-tags",
-		"release:version": "pnpm version prerelease --preid=next -m '🔖 %s' --no-git-checks --sign-git-tag --git-tag-version --allow-same-version --force",
-		"release:prepare": "node bin/prepare",
+		"release:ver": "pnpm version prerelease --preid=next -m '🔖 %s' --no-git-checks --sign-git-tag --git-tag-version --allow-same-version --force",
+		"release:pre": "node bin/prepare",
 		"release:npm": "pnpm publish --no-git-checks --registry=https://registry.npmjs.org -C dist/css",
 		"release:gpr": "pnpm publish --ignore-scripts --no-git-checks --registry=https://npm.pkg.github.com -C dist/css && pnpm clean",
-		"release": "pnpm release:version && pnpm release:prepare && pnpm release:npm && pnpm release:gpr",
-		"clean": "rm -rf node_modules"
+		"release": "pnpm release:ver && pnpm release:pre && pnpm release:npm && pnpm release:gpr && git push --follow-tags",
+		"clean": "rm -rf node_modules && rm -rf dist/css/[a-z]*.css package.json license* readme.md"
 	},
 	"main": "./dist/css/index.css",
 	"types": "./index.d.ts",

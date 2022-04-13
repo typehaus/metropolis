@@ -59,7 +59,7 @@ function updatePackageExports (pkg = {}) {
   // initialize pkg.files (or erase if it already exists)
   pkg.files = []
   // find *all* font files, including the newly created aliases
-  const cssFiles = Array.from(fs.readdirSync(path.join(__dirname, '../dist/css', './')).filter(i => i.endsWith('.css')));
+  const cssFiles = Array.from(fs.readdirSync(path.join(__dirname, '../dist/css')).filter(i => i.endsWith('.css')));
   for (let file of cssFiles) {
     // ensure that each file is exposed in the package.json "exports" field
     pkg.exports[ `./${file}` ] = `./${file}`
@@ -70,10 +70,10 @@ function updatePackageExports (pkg = {}) {
   return pkg
 }
 
-function copyStaticFiles () {
+async function copyStaticFiles () {
   const files = ['license.md', 'readme.md', 'index.d.ts', '.gitignore']
   for (const file of files) {
-    fs.copyFileSync(path.resolve('../', file), path.resolve('../dist/css/', file))
+    await fs.copyFile(path.resolve(__dirname, '../', file), path.resolve(__dirname, '../', 'dist/css/', file)).then(() => console.log(`Copied ${file} to dist/css`))
   }
 }
 
