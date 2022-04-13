@@ -3,6 +3,7 @@
 	"version": "12.0.0-next.4",
 	"license": "Unlicense",
 	"author": "chrismsimpson",
+  "private": true,
 	"contributors": [
 		{
 			"name": "Nicholas Berlette",
@@ -18,11 +19,7 @@
 	"repository": "typehaus/metropolis",
 	"bugs": "https://github.com/typehaus/metropolis/issues",
 	"homepage": "https://typehaus.org/metropolis",
-	"publishConfig": {
-		"access": "public",
-		"tag": "latest"
-	},
-	"packageManager": "pnpm@6.23.4",
+	"packageManager": "pnpm@6.23.6",
 	"scripts": {
 		"test": "pnpm lint",
 		"build:css": "node bin/build",
@@ -32,52 +29,15 @@
 		"preversion": "pnpm format && pnpm lint",
 		"version": "git add --all",
 		"postversion": "git push --follow-tags",
-		"prepublishOnly": "pnpm version prerelease --preid=next -m '🔖 %s' --no-git-checks --sign-git-tag --git-tag-version --allow-same-version --force ${DRY_RUN:+'--dry-run'}",
-		"postpublish": "pnpm clean",
-		"release": "pnpm publish --no-git-checks --registry=https://registry.npmjs.org",
+		"release:version": "pnpm version prerelease --preid=next -m '🔖 %s' --no-git-checks --sign-git-tag --git-tag-version --allow-same-version --force",
+    "release:prepare": "node bin/prepare",
+		"release:publish": "pnpm publish --no-git-checks --registry=https://registry.npmjs.org -C dist/css",
+    "postpublish": "pnpm publish --ignore-scripts --registry=https://npm.pkg.github.com -C dist/css && pnpm clean",
+    "release": "pnpm release:version && pnpm release:prepare && pnpm release:publish",
 		"clean": "rm -rf node_modules"
 	},
-	"files": [
-		"!docs",
-		"!src",
-		"!.github",
-		"!dist/**/*",
-		"dist/css/metropolis.css",
-		"dist/css/*.css"
-	],
-	"main": "./dist/css/metropolis.css",
+	"main": "./dist/css/index.css",
 	"types": "./index.d.ts",
-	"exports": {
-		".": {
-			"types": "./index.d.ts",
-			"import": "./dist/css/metropolis.css",
-			"require": "./dist/css/metropolis.css",
-			"default": "./dist/css/metropolis.css"
-		},
-		"./black.css": "./dist/css/black.css",
-		"./900.css": "./dist/css/black.css",
-		"./extrabold.css": "./dist/css/extrabold.css",
-		"./xbold.css": "./dist/css/extrabold.css",
-		"./800.css": "./dist/css/extrabold.css",
-		"./bold.css": "./dist/css/bold.css",
-		"./700.css": "./dist/css/bold.css",
-		"./semibold.css": "./dist/css/semibold.css",
-		"./600.css": "./dist/css/semibold.css",
-		"./medium.css": "./dist/css/medium.css",
-		"./500.css": "./dist/css/medium.css",
-		"./regular.css": "./dist/css/regular.css",
-		"./book.css": "./dist/css/regular.css",
-		"./400.css": "./dist/css/regular.css",
-		"./light.css": "./dist/css/light.css",
-		"./300.css": "./dist/css/light.css",
-		"./extralight.css": "./dist/css/extralight.css",
-		"./xlight.css": "./dist/css/extraLight.css",
-		"./200.css": "./dist/css/extralight.css",
-		"./thin.css": "./dist/css/thin.css",
-		"./100.css": "./dist/css/thin.css",
-		"./package.json": "./package.json",
-		"./index.d.ts": "./index.d.ts"
-	},
 	"description": "Modern, geometric typeface. Designed by Chris M. Simpson, updated and  maintained by @typehaus.",
 	"keywords": [
 		"font",
@@ -93,6 +53,7 @@
 		"woff",
 		"woff2"
 	],
+  "prettier": "@brlt/prettier",
 	"devDependencies": {
 		"@brlt/prettier": "^1.6.4",
 		"webfont": "11.2.26"

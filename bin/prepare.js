@@ -18,14 +18,14 @@ function createWeightAliases () {
     900: [ 'black' ],
   }
 
+  const indexCSS = path.resolve(__dirname, '../dist/css', `./index.css`);
+  fs.rmSync(indexCSS, {force: true});
+
   for (let weight in weights) {
     // create aliases for each font weight (200.css -> extralight.css, xlight.css, lighter.css)
     for (const style of weights[weight]) {
       fs.writeFileSync(
-        path.resolve(__dirname, '../dist/css', `./${style}.css`), `
-/*! @typehaus/metropolis/${style}.css (${weight}) */
-@import "./${weight}.css";
-`,
+        path.resolve(__dirname, '../dist/css', `./${style}.css`), `/*! @typehaus/metropolis/${style}.css (${weight}) */ @import "./${weight}.css";`,
         'utf8'
       )
     }
@@ -33,8 +33,7 @@ function createWeightAliases () {
     // import each weight into the main index.css file
     // (saves 1.5MB compared to lazily writing the same font data to multiple locations)
     fs.appendFileSync(
-      path.resolve(__dirname, '../dist/css', `./index.css`), `
-/*! @typehaus/metropolis/{${[ weight, ...weights[ weight ] ].join(',')}}.css */
+      indexCSS, `/*! @typehaus/metropolis/{${[ weight, ...weights[ weight ] ].join(',')}}.css */
 @import "./${weight}.css";
 `,
       'utf8'
@@ -43,6 +42,9 @@ function createWeightAliases () {
 }
 
 function updatePackageExports (pkg = {}) {
+  // update package.json main and types
+  pkg.main = './index.css';
+  pkg.types = './index.d.ts';
   // populate pkg.exports with initial values to make things easier
   pkg.exports = {
     ".": {
@@ -69,11 +71,10 @@ function updatePackageExports (pkg = {}) {
 }
 
 function copyStaticFiles () {
-  let files = Array.from(
-    fs.readdirSync(path.resolve('../')))
-      .filter(f => f.match(/(readme\.md|license(\.md)?|\.gitignore|index\.d\.ts)$/i))
-  for (const file of files) {
-    fs.copyFileSync(path.resolve(__dirname, '../', path.basename(file)), path.resolve(__dirname, '../dist/css/', file))
+  const pattern = /(readme\.md|license(\.md)?|\.gitignore|index\.d\.ts)$/i;
+  const files = Array.from(fs.readdirSync(path.resolve('../')))
+  for (const file of files.filter(f => f.match(pattern))) {
+    fs.copyFileSync(path.resolve(__dirname, '../', file), path.resolve(__dirname, '../dist/css/', file))
   }
 }
 
@@ -84,6 +85,24 @@ function copyStaticFiles () {
   let pkg = getPackageJson()
   // update the package.json data (files, exports)
   pkg = updatePackageExports(pkg)
+  // update publish configuration
+  pkg.private = false;
+  pkg.publishConfig = {
+    access: "public",
+    tag: "latest"
+  }
+  // remove package scripts, because why do we need them?
+  delete pkg.scripts;
+  // remove devDependencies
+  delete pkg.devDependencies;
+  // and remove prettier...
+  delete pkg.prettier;
+  // update author info
+  pkg.author = {
+    name: "Nicholas Berlette",
+    email: "nick@typehaus.org",
+    url: "https://typehaus.org"
+  }
   // copy over static files (license.md, readme.md, etc.)
   copyStaticFiles()
   // write the updated package.json
@@ -92,5 +111,5 @@ function copyStaticFiles () {
     JSON.stringify(pkg, null, 2),
     'utf8'
   )
-  console.log('Finished preparing dist/css for publishing to npm. OK to proceed.')
+  console.log('🎉 Finished preparing dist/css for publishing to npm. OK to proceed.')
 })();
