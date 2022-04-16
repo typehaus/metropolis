@@ -24,11 +24,11 @@ pnpm add @typehaus/metropolis # yarn add @typehaus/metropolis
 
 ## Webfonts - `woff`, `woff2`
 
-If your project is managed by **npm** / **yarn** / **pnpm** and contains a `package.json`, the easiest way to add Metropolis is to install it from the NPM Registry to your project's `dependencies`.  
+If your project is managed by **npm** / **yarn** / **pnpm** and contains a `package.json`, the easiest way to add Metropolis is to install it from the NPM Registry to your project's `dependencies`.
 
 > Make sure it's **not in `devDependencies`** — otherwise, bundlers like Rollup / Webpack will exclude it from the prod. bundle!
 
-### Importing 
+### Importing
 
 You can just import the whole family (if you're into that sort of thing).
 
@@ -42,7 +42,7 @@ This will import `./index.css`, which itself imports each weight from `100.css` 
 
 ### "Tree-shaking" and Asset Aliases
 
-You can even import individual weights - which is **highly recommended**, and helps cut down on your final bundle size.  
+You can even import individual weights - which is **highly recommended**, and helps cut down on your final bundle size.
 
 Both the normal and italic style are included in each weight, and both the keyword or numeric filename work just fine. In the cases like `ExtraLight` and `ExtraBold`, I've included a few common aliases such as `xlight.css` and `bolder.css`.
 
@@ -51,7 +51,7 @@ Both the normal and italic style are included in each weight, and both the keywo
 ```js
 import '@typehaus/metropolis/100.css'
 ```
-	
+
 ```js
 import '@typehaus/metropolis/thin.css'
 ```
@@ -186,9 +186,9 @@ Any of the above _JavaScript_ imports will often also work inside your project's
 
 #### What's in the stylesheets?
 
-Each stylesheet of the numeric naming convention contains **two** `@font-face` rules (one `regular`, one `italic`).  
-In each of those rules is Metropolis in that weight + style, formatted as `woff` + `woff2`, and encoded in `base64` + `utf-8`.  
-All the other CSS files simply contain `@import` rules which reference their associated numeric weight's file.  
+Each stylesheet of the numeric naming convention contains **two** `@font-face` rules (one `regular`, one `italic`).
+In each of those rules is Metropolis in that weight + style, formatted as `woff` + `woff2`, and encoded in `base64` + `utf-8`.
+All the other CSS files simply contain `@import` rules which reference their associated numeric weight's file.
 
 <br><hr><br>
 
@@ -204,8 +204,8 @@ The shorthand format above is intended for rapid prototyping in **development** 
 a *non-deterministic* asset path, its content is not definitively known nor guaranteed to remain the same. Also, if a breaking
 change is published, your project could suddenly break and be stuck on Times New Roman without any warning 😰
 
-For production, you always want to pin the package version (that means no `^ or ~ or *` semver prefixes), and use the long-form 
-URL for any assets. This implies including **all** file extensions.  
+For production, you always want to pin the package version (that means no `^ or ~ or *` semver prefixes), and use the long-form
+URL for any assets. This implies including **all** file extensions.
 
 As an example, this URL will **always** resolve to the exact same version of `100.css` from `v12.0.0-next.7`:
 
@@ -219,7 +219,7 @@ You may wish to use Metropolis on your own computer. Personally, I use it for so
 
 Included the typehaus release are font files in OpenType format (`.otf`), TrueType (`.ttf`), and a single TrueType Collection (`.ttc`). The `.ttc` is a nice option because all of the different weights have been compiled into a single file - the Metropolis Collection - which makes installation a breeze.
 
-You can [download the assets](https://github.com/typehaus/metropolis/tree/main/dist) directly from our [GitHub Repository](https://github.com/typehaus/metropolis). 
+You can [download the assets](https://github.com/typehaus/metropolis/tree/main/dist) directly from our [GitHub Repository](https://github.com/typehaus/metropolis).
 
 If you're running macOS, just drag and drop into FontBook.app. Or, run this command in terminal to download and add it to your Font Library:
 
@@ -252,7 +252,7 @@ Given an **em square of 1000**, the metrics for Metropolis are as follows:
 
 The italics angle is universally **`11.75°`**.
 
-### Dimensions 
+### Dimensions
 
 |               Light              |               Regular               |               Black               |
 | :------------------------------: | :---------------------------------: | :-------------------------------: |
@@ -368,10 +368,10 @@ Will update if/when I can recreate how I did this. Again, a lot of just eyeballi
 1. Remove all kerning
 2. Draw
 3. Space
-4. Draw BubbleKern bubbles 
+4. Draw BubbleKern bubbles
 5. Re-Run BubbleKern (use `./src/Metropolis BubbleKern Pairs.txt`)
-6. Export 
-7. Commit 
+6. Export
+7. Commit
 8. Create release tag
 
 > **Note**: Hoping to arrive at optimal BubbleKern outlines soon to negate the need to ever re-do these.
@@ -380,7 +380,7 @@ Will update if/when I can recreate how I did this. Again, a lot of just eyeballi
 
 Once I've run BubbleKern, I create exports for OpenType, TrueType, UFO, EOT, WOFF & WOFF2.
 
----  
+---
 
 ## Future Plans
 
@@ -410,7 +410,7 @@ At present, the best bet is the UFO export. However, if you want to request glyp
 
 This will in turn mean someone (likely myself) will need to translate this into an appropriate commit/PR.
 
----  
+---
 
 ## Contributing
 
@@ -437,7 +437,7 @@ Please **do not**:
 - Set manual kerns (or indeed run the kerning tool at all)
 - Modify any glyphs not related to your changes
 
-As a general rule, a small isolated commit should equal a small isolated PR. 
+As a general rule, a small isolated commit should equal a small isolated PR.
 
 <style>
 details>summary {
@@ -460,15 +460,6 @@ details>summary {
   --c-black: #f0f0f0 !important;
   --c-divider-light: rgba(230, 230, 230, .12) !important;
   --c-divider-dark: rgba(200, 200, 200, .48) !important;
-}  
+}
 }
 </style>
-<script>
-// super ghetto hack for right now. only add if we're client side
-if (typeof window !== 'undefined') {
-const icon = document.createElement('link').setAttribute('rel', 'shortcut icon');
-icon.setAttribute('href', '/favicon.svg');
-icon.setAttribute('type', 'image/svg+xml;charset=utf-8');
-document.querySelector('head').appendChild(icon);
-}
-</script>
