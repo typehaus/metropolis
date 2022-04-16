@@ -464,8 +464,11 @@ details>summary {
 }
 </style>
 <script>
+// super ghetto hack for right now. only add if we're client side
+if (typeof window !== 'undefined') {
 const icon = document.createElement('link').setAttribute('rel', 'shortcut icon');
 icon.setAttribute('href', '/favicon.svg');
 icon.setAttribute('type', 'image/svg+xml;charset=utf-8');
 document.querySelector('head').appendChild(icon);
+}
 </script>
