@@ -3,21 +3,32 @@
 </h1>
 
 <div align=center>
-<h5>Minimalist, modern, geometric typeface by <a href="https://github.com/chrismsimpson">Chris M. Simpson</a>. Revived as a webfont by <a href="https://github.com/typehaus"><strong><code>typehaus</code></strong></a>.</h5>
+<h4>Minimalist, modern, geometric typeface designed by <a href="https://github.com/chrismsimpson">Chris M. Simpson</a>.</h4>
+<h5>Maintained and distributed as a webfont by <a href="https://berlette.com" target="_blank" rel="noopener">Nicholas Berlette</a> and <a href="https://github.com/typehaus"><strong>typehaus.org</strong></a>.</h5>
 </div>
 <br>
 
 <div align=center>
-<p><img src="https://badgen.net/npm/v/@typehaus/metropolis?icon=npm&label=&color=red&labelColor=red" alt="Latest Version"> <img src="https://badgen.net/packagephobia/install/@typehaus/metropolis?icon=packagephobia&label=&color=8cc055&labelColor=8cc055" alt="Size"> <img src="https://badgen.net/npm/types/@typehaus/metropolis?icon=typescript&color=cyan&labelColor=cyan&label="></p>
-<br>
 
 ```bash
-pnpm add @typehaus/metropolis
+pnpm add @typehaus/metropolis # yarn add @typehaus/metropolis
 ```
+
+<br><p><img src="https://badgen.net/npm/v/@typehaus/metropolis?icon=npm&label=&color=red&labelColor=red" alt="Latest Version"> <img src="https://badgen.net/packagephobia/install/@typehaus/metropolis?icon=packagephobia&label=&color=8cc055&labelColor=8cc055" alt="Size"> <img src="https://badgen.net/npm/types/@typehaus/metropolis?icon=typescript&color=cyan&labelColor=cyan&label="></p>
 
 </div><br>
 
-## Getting Started
+# Usage
+
+**typehaus** font packages such as Metropolis are all made with versatility, compatibility, and performance as the primary objectives. That being said, you have many different options available to you to add Metropolis into any project/workflow you want.
+
+## Webfonts - `woff`, `woff2`
+
+If your project is managed by **npm** / **yarn** / **pnpm** and contains a `package.json`, the easiest way to add Metropolis is to install it from the NPM Registry to your project's `dependencies`.  
+
+> Make sure it's **not in `devDependencies`** — otherwise, bundlers like Rollup / Webpack will exclude it from the prod. bundle!
+
+### Importing 
 
 You can just import the whole family (if you're into that sort of thing).
 
@@ -27,34 +38,6 @@ import '@typehaus/metropolis'
 
 This will import `./index.css`, which itself imports each weight from `100.css` to `900.css`.
 
-### What do these CSS files contain?
-
-Each stylesheet of the numeric naming convention contains **two** `@font-face` rules (one `regular`, one `italic`).
-In each of those rules is Metropolis in that weight + style, formatted as `woff` + `woff2`, and encoded in `base64` + `utf-8`.
-All the other CSS files simply contain `@import` rules which reference their associated numeric weight's file.
-
-
-### Using a remote CDN
-
-Some scenarios might preclude the ability to self-host your font assets. In those situations, you can always use a remote CDN service like [**unpkg.com**](https://cdn.jsdelivr.net/npm/@typehaus/metropolis@latest) or [**jsdelivr.net**](https://jsdelivr.net/npm/@typehaus/metropolis):
-
-```js
-import 'https://unpkg.com/@typehaus/metropolis'
-```
-
-The shorthand format above is intended for rapid prototyping in **development** environments only. Since it's using
-a *non-deterministic* asset path, its content is not definitively known nor guaranteed to remain the same. Also, if a breaking
-change is published, your project could suddenly break and be stuck on Times New Roman without any warning 😰
-
-For production, you always want to pin the package version (that means no `^ or ~ or *` semver prefixes), and use the long-form 
-URL for any assets. This implies including **all** file extensions.  
-
-To demonstrate, this URL will **always** resolve to the exact same data for `100.css` from `v12.0.0-next.7`:
-
-```js
-import 'https://cdn.jsdelivr.net/npm/@typehaus/metropolis@12.0.0-next.7/100.css'
-```
-
 <br>
 
 ### "Tree-shaking" and Asset Aliases
@@ -62,32 +45,6 @@ import 'https://cdn.jsdelivr.net/npm/@typehaus/metropolis@12.0.0-next.7/100.css'
 You can even import individual weights - which is **highly recommended**, and helps cut down on your final bundle size.  
 
 Both the normal and italic style are included in each weight, and both the keyword or numeric filename work just fine. In the cases like `ExtraLight` and `ExtraBold`, I've included a few common aliases such as `xlight.css` and `bolder.css`.
-
-<style>
-details>summary {
-  font-size: 1.3em;
-  font-weight: 700;
-  padding: 5px 10px;
-  margin: 20px 0 6px;
-  border-bottom: 1px solid var(--c-divider-dark);
-  cursor: pointer;
-}
-@media (prefers-color-scheme: dark) {
-:root {
-  --c-bg: #112233 !important;
-  --c-text: #f0f0f0 !important;
-  --c-text-light-3: #2c3e50 !important;
-  --c-text-light-2: #476582 !important;
-  --c-text-light-1: #90a4b7 !important;
-  --c-white: #112233 !important;
-  --c-white-dark: #000000 !important;
-  --c-black: #f0f0f0 !important;
-  --c-divider-light: rgba(230, 230, 230, .12) !important;
-  --c-divider-dark: rgba(200, 200, 200, .48) !important;
-}  
-}
-</style>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
 <details open><summary>100, Thin</summary>
 
@@ -203,7 +160,7 @@ import '@typehaus/metropolis/black.css'
 
 </details><br>
 
-### Implement
+#### Implementing in CSS
 
 Now you just need to add it to your actual CSS!
 
@@ -214,6 +171,61 @@ html, body {
 ```
 
 > *The additional font families are* “emergency backups”... *that way, in the terrible (and unheard-of) event that your fonts don't load, your users won't be stuck with `Times New Roman`*.
+
+#### Importing into CSS
+
+Any of the above _JavaScript_ imports will often also work inside your project's CSS, by using `@import` instead of `import`:
+
+```css tailwind.css
+/* example tailwind.css */
+@import "@typehaus/metropolis/800.css";
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+```
+
+#### What's in the stylesheets?
+
+Each stylesheet of the numeric naming convention contains **two** `@font-face` rules (one `regular`, one `italic`).  
+In each of those rules is Metropolis in that weight + style, formatted as `woff` + `woff2`, and encoded in `base64` + `utf-8`.  
+All the other CSS files simply contain `@import` rules which reference their associated numeric weight's file.  
+
+<br><hr><br>
+
+### Using a remote CDN
+
+Some scenarios might preclude the ability to self-host your font assets. In those situations, you can always use a remote CDN service like [**unpkg.com**](https://cdn.jsdelivr.net/npm/@typehaus/metropolis@latest) or [**jsdelivr.net**](https://jsdelivr.net/npm/@typehaus/metropolis):
+
+```js
+import 'https://unpkg.com/@typehaus/metropolis'
+```
+
+The shorthand format above is intended for rapid prototyping in **development** environments only. Since it's using
+a *non-deterministic* asset path, its content is not definitively known nor guaranteed to remain the same. Also, if a breaking
+change is published, your project could suddenly break and be stuck on Times New Roman without any warning 😰
+
+For production, you always want to pin the package version (that means no `^ or ~ or *` semver prefixes), and use the long-form 
+URL for any assets. This implies including **all** file extensions.  
+
+As an example, this URL will **always** resolve to the exact same version of `100.css` from `v12.0.0-next.7`:
+
+```js
+import 'https://cdn.jsdelivr.net/npm/@typehaus/metropolis@12.0.0-next.7/100.css'
+```
+
+## Local Install - `otf`, `ttf`, `ttc`
+
+You may wish to use Metropolis on your own computer. Personally, I use it for some graphic design projects in Adobe Photoshop and Illustrator (macOS), so I needed something other than webfonts to install locally.
+
+Included the typehaus release are font files in OpenType format (`.otf`), TrueType (`.ttf`), and a single TrueType Collection (`.ttc`). The `.ttc` is a nice option because all of the different weights have been compiled into a single file - the Metropolis Collection - which makes installation a breeze.
+
+You can [download the assets](https://github.com/typehaus/metropolis/tree/main/dist) directly from our [GitHub Repository](https://github.com/typehaus/metropolis). 
+
+If you're running macOS, just drag and drop into FontBook.app. Or, run this command in terminal to download and add it to your Font Library:
+
+```bash
+curl -fsSL https://cdn.jsdelivr.net/gh/typehaus/metropolis/dist/ttc/Metropolis.ttc -o ~/Library/Fonts/Metropolis.ttc
+```
 
 <br><hr><br>
 
@@ -427,4 +439,33 @@ Please **do not**:
 
 As a general rule, a small isolated commit should equal a small isolated PR. 
 
-
+<style>
+details>summary {
+  font-size: 1.3em;
+  font-weight: 700;
+  padding: 5px 10px;
+  margin: 20px 0 6px;
+  border-bottom: 1px solid var(--c-divider-dark);
+  cursor: pointer;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+  --c-bg: #112233 !important;
+  --c-text: #f0f0f0 !important;
+  --c-text-light-3: #2c3e50 !important;
+  --c-text-light-2: #476582 !important;
+  --c-text-light-1: #90a4b7 !important;
+  --c-white: #112233 !important;
+  --c-white-dark: #000000 !important;
+  --c-black: #f0f0f0 !important;
+  --c-divider-light: rgba(230, 230, 230, .12) !important;
+  --c-divider-dark: rgba(200, 200, 200, .48) !important;
+}  
+}
+</style>
+<script>
+const icon = document.createElement('link').setAttribute('rel', 'shortcut icon');
+icon.setAttribute('href', '/favicon.svg');
+icon.setAttribute('type', 'image/svg+xml;charset=utf-8');
+document.querySelector('head').appendChild(icon);
+</script>
