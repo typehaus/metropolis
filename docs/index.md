@@ -8,14 +8,12 @@
 <br>
 
 <div align=center>
-<img src="https://badgen.net/npm/v/@typehaus/metropolis?icon=npm&label=&color=red&labelColor=red" alt="Latest Version">
-<img src="https://badgen.net/packagephobia/install/@typehaus/metropolis?icon=packagephobia&label=&color=8cc055&labelColor=8cc055" alt="Size">
-<img src="https://badgen.net/npm/types/@typehaus/metropolis?icon=typescript&color=cyan&labelColor=cyan&label=">
-<br><br>
+<p><img src="https://badgen.net/npm/v/@typehaus/metropolis?icon=npm&label=&color=red&labelColor=red" alt="Latest Version"> <img src="https://badgen.net/packagephobia/install/@typehaus/metropolis?icon=packagephobia&label=&color=8cc055&labelColor=8cc055" alt="Size"> <img src="https://badgen.net/npm/types/@typehaus/metropolis?icon=typescript&color=cyan&labelColor=cyan&label="></p>
+<br>
 
-| 			**pnpm** 			|
-|:-----------------------------------------------------:|
-| <pre><code>pnpm add @typehaus/metropolis</code></pre> |
+```bash
+pnpm add @typehaus/metropolis
+```
 
 </div><br>
 
@@ -71,7 +69,7 @@ details>summary {
   font-weight: 700;
   padding: 5px 10px;
   margin: 20px 0 6px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--c-divider-dark);
   cursor: pointer;
 }
 @media (prefers-color-scheme: dark) {
@@ -81,6 +79,11 @@ details>summary {
   --c-text-light-3: #2c3e50 !important;
   --c-text-light-2: #476582 !important;
   --c-text-light-1: #90a4b7 !important;
+  --c-white: #112233 !important;
+  --c-white-dark: #000000 !important;
+  --c-black: #f0f0f0 !important;
+  --c-divider-light: rgba(230, 230, 230, .12) !important;
+  --c-divider-dark: rgba(200, 200, 200, .48) !important;
 }  
 }
 </style>
