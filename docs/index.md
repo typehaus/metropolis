@@ -9,112 +9,81 @@
 
 <div align=center>
 <img src="https://badgen.net/npm/v/@typehaus/metropolis?icon=npm&label=&color=red&labelColor=red" alt="Latest Version">
-<img src="https://badgen.net/github/last-commit/typehaus/metropolis/main?icon=github&color=123&labelColor=123&label=" alt="Last Commit">
 <img src="https://badgen.net/packagephobia/install/@typehaus/metropolis?icon=packagephobia&label=&color=8cc055&labelColor=8cc055" alt="Size">
 <img src="https://badgen.net/npm/types/@typehaus/metropolis?icon=typescript&color=cyan&labelColor=cyan&label=">
-</div>
-<br>
+<br><br>
 
-<table align=center border=0 style="border-color:transparent !important">
-<tr><td>
+| 			**pnpm** 			|
+|:-----------------------------------------------------:|
+| <pre><code>pnpm add @typehaus/metropolis</code></pre> |
 
-```bash
-pnpm add @typehaus/metropolis	
-```
-
-</td><td>
-
-```bash
-yarn add @typehaus/metropolis
-```
-
-</td><td>
-
-```bash
-npm i --save @typehaus/metropolis
-```
-
-</td></tr>
-</table>
-	
-<br>
-
-## [Table of Contents](#table-of-contents)
-
-1. [Getting Started](#getting-started)
-   - [Install](#install)
-   - [Import](#import)
-   - [Implement](#implement)
-2. [Specimens](#specimens)
-3. [Metrics](#metrics)
-   - [Italics](#italics)
-   - [Dimensions](#dimensions)
-   - [Alignment Zones](#alignment-zones)
-4. [Workflow](#workflow)
-   - [HT Letterspacer](#ht-letterspacer)
-     - [Parameters](#parameters)
-     - [Autospacing](#autospacing)
-     - [User Interface](#user-interface)
-   - [BubbleKern](#bubblekern)
-   - [Cursify](#cursify)
-5. [Release Process](#release-process)
-6. [Export Formats](#export-formats)
-7. [Future Plans](#future-plans)
-8. [Alternatives to Glyphs](#alternatives-to-glyphs)
-9. [Contributing](#contributing)
-
-<br><hr><br>
+</div><br>
 
 ## Getting Started
 
-Metropolis has just been published by **`typehaus`** to the NPM registry! While it's still in the experimental stage, this makes it easier than ever to include it in your projects. [Just add `@typehaus/metropolis` to your project dependencies!](#install)
-
-<br>
-
-### Install
-
-```bash
-pnpm add @typehaus/metropolis
-```
-
-> If you don't have **pnpm**, [click here to find out why you should.](https://pnpm.io/motivation)
-
-<br>
-
-### Import
-
-Best practice for CSS-based webfonts is to import them in the same place you import your stylesheets and theme files, to ensure they aren't missed by your pipeline's asset optimization steps.  
-
-It's always recommended to consult the official documentation of whichever framework you're building with, but heres
-
-- [Next.js](https://nextjs.org), prepend to `_app.tsx` or `_app.jsx` 
-- [SvelteKit](https://kit.svelte.dev),  prepend to `__layout.svelte` file. 
-- [Vue](https://vuejs.org) / [Nuxt](https://nuxtjs.org) / [Vitesse](https://github.com/antfu/vitesse), add to your default layout file
-
-<br>
-
-You can just import the whole family (if you're into that sort of thing):
+You can just import the whole family (if you're into that sort of thing).
 
 ```js
 import '@typehaus/metropolis'
 ```
 
-You can also opt to use a remote CDN service, like [**unpkg.com**](https://cdn.jsdelivr.net/npm/@typehaus/metropolis@latest) or [**jsdelivr.net**](https://jsdelivr.net/npm/@typehaus/metropolis):
+This will import `./index.css`, which itself imports each weight from `100.css` to `900.css`.
+
+### What do these CSS files contain?
+
+Each stylesheet of the numeric naming convention contains **two** `@font-face` rules (one `regular`, one `italic`).
+In each of those rules is Metropolis in that weight + style, formatted as `woff` + `woff2`, and encoded in `base64` + `utf-8`.
+All the other CSS files simply contain `@import` rules which reference their associated numeric weight's file.
+
+
+### Using a remote CDN
+
+Some scenarios might preclude the ability to self-host your font assets. In those situations, you can always use a remote CDN service like [**unpkg.com**](https://cdn.jsdelivr.net/npm/@typehaus/metropolis@latest) or [**jsdelivr.net**](https://jsdelivr.net/npm/@typehaus/metropolis):
 
 ```js
-// this should only be used in development:
 import 'https://unpkg.com/@typehaus/metropolis'
 ```
 
+The shorthand format above is intended for rapid prototyping in **development** environments only. Since it's using
+a *non-deterministic* asset path, its content is not definitively known nor guaranteed to remain the same. Also, if a breaking
+change is published, your project could suddenly break and be stuck on Times New Roman without any warning 😰
+
+For production, you always want to pin the package version (that means no `^ or ~ or *` semver prefixes), and use the long-form 
+URL for any assets. This implies including **all** file extensions.  
+
+To demonstrate, this URL will **always** resolve to the exact same data for `100.css` from `v12.0.0-next.7`:
+
 ```js
-// for production, only import assets from their fully-resolved URL, like this
 import 'https://cdn.jsdelivr.net/npm/@typehaus/metropolis@12.0.0-next.7/100.css'
 ```
 
 <br>
 
-You can also import individual weights (recommended). Both the normal and italic style are included in each weight, and (for compatibility) both the keyword or numeric filename work just fine.
+### "Tree-shaking" and Asset Aliases
 
+You can even import individual weights - which is **highly recommended**, and helps cut down on your final bundle size.  
+
+Both the normal and italic style are included in each weight, and both the keyword or numeric filename work just fine. In the cases like `ExtraLight` and `ExtraBold`, I've included a few common aliases such as `xlight.css` and `bolder.css`.
+
+<style>
+details>summary {
+  font-size: 1.3em;
+  font-weight: 700;
+  padding: 5px 10px;
+  margin: 20px 0 6px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+  --c-bg: #112233 !important;
+  --c-text: #f0f0f0 !important;
+  --c-text-light-3: #2c3e50 !important;
+  --c-text-light-2: #476582 !important;
+  --c-text-light-1: #90a4b7 !important;
+}  
+}
+</style>
 <details open><summary>100, Thin</summary>
 
 ```js
@@ -138,6 +107,10 @@ import '@typehaus/metropolis/xlight.css'
 
 ```js
 import '@typehaus/metropolis/extralight.css'
+```
+
+```js
+import '@typehaus/metropolis/lighter.css'
 ```
 
 </details><details><summary>300, Light</summary>
@@ -209,6 +182,10 @@ import '@typehaus/metropolis/xbold.css'
 import '@typehaus/metropolis/extrabold.css'
 ```
 
+```js
+import '@typehaus/metropolis/bolder.css'
+```
+
 </details><details><summary>900, Black</summary>
 
 ```js
@@ -219,9 +196,7 @@ import '@typehaus/metropolis/900.css'
 import '@typehaus/metropolis/black.css'
 ```
 
-</details>
-
-<br>
+</details><br>
 
 ### Implement
 
