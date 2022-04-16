@@ -87,6 +87,8 @@ details>summary {
 }  
 }
 </style>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
 <details open><summary>100, Thin</summary>
 
 ```js
