@@ -2,12 +2,12 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   lang: 'en-US',
-  title: 'typehaus/metropolis',
-  base: '/metropolis',
+  title: 'Metropolis',
+  base: '/',
   themeConfig: {
     logo: '/favicon.svg',
     head: [
-      '<link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg" />',
+      '<link rel="shortcut icon" type="image/svg+xml" href="/favicon.svg" />',
     ],
     repo: 'typehaus/metropolis',
     docsDir: 'docs',
